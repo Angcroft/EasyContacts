@@ -1,33 +1,23 @@
 import java.util.ArrayList;
 
 public class ContactManager {
-    private ArrayList<Contact> contacts;
+    private static ArrayList<Contact> contacts = new ArrayList<>();
 
-    public ContactManager() {
-        contacts = new ArrayList<>();
-    }
-
-    // Add a contact
-    public void addContact(Contact contact) {
+    // Add contact
+    public static void addContact(Contact contact) {
         contacts.add(contact);
     }
 
-    // Edit a contact
-    public void editContact(int index, Contact contact) {
-        if (index >= 0 && index < contacts.size()) {
-            contacts.set(index, contact);
-        }
+    // Edit contact
+    public static void editContact() {
     }
 
-    // Delete a contact
-    public void deleteContact(int index) {
-        if (index >= 0 && index < contacts.size()) {
-            contacts.remove(index);
-        }
+    // Delete contact
+    public static void deleteContact() {
     }
 
-    // Look up a contact by name
-    public Contact lookContactByName(String name) {
+    // Look contact by name
+    public static Contact lookContactByName(String name) {
         for (Contact contact : contacts) {
             if (contact.getName().equalsIgnoreCase(name)) {
                 return contact;
@@ -36,10 +26,12 @@ public class ContactManager {
         return null;
     }
 
-    // List all contacts
-    public void listContacts() {
+    // List all contact
+    public static String listContacts() {
+        StringBuilder sb = new StringBuilder();
         for (Contact contact : contacts) {
-            System.out.println(contact);
+            sb.append(contact).append("\n");
         }
+        return sb.toString();
     }
 }
