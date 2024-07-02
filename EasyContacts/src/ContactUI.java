@@ -7,14 +7,25 @@ public class ContactUI extends JFrame {
     private JLabel createNameLabel;
     private JLabel createEmailLabel;
     private JLabel createPhoneLabel;
+    private JLabel editNameLabel;
+    private JLabel editEmailLabel;
+    private JLabel editPhoneLabel;
+    private JLabel indexContactLabel;
+
     private JButton addContactButton;
     private JButton editContactButton;
     private JButton deleteContactButton;
     private JButton lookContactButton;
     private JButton saveContactButton;
+    private JButton saveEditButton;
+
     private JTextArea createNameArea;
     private JTextArea createEmailArea;
     private JTextArea createPhoneArea;
+    private JTextArea editNameArea;
+    private JTextArea editEmailArea;
+    private JTextArea editPhoneArea;
+    private JTextArea indexContactArea;
     public JTextArea contactsArea;
 
     public ContactUI() {
@@ -54,31 +65,31 @@ public class ContactUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 createNameLabel = new JLabel("Add a Name");
-                createNameLabel.setBounds(170, 16, 200, 25);
+                createNameLabel.setBounds(180, 20, 200, 25);
                 add(createNameLabel);
 
                 createNameArea = new JTextArea();
-                createNameArea.setBounds(170, 40, 200, 25);
+                createNameArea.setBounds(180, 40, 200, 25);
                 add(createNameArea);
 
                 createPhoneLabel = new JLabel("Add a Phone number");
-                createPhoneLabel.setBounds(400, 16, 200, 25);
+                createPhoneLabel.setBounds(180, 60, 200, 25);
                 add(createPhoneLabel);
 
                 createPhoneArea = new JTextArea();
-                createPhoneArea.setBounds(400, 40, 200, 25);
+                createPhoneArea.setBounds(180, 80, 200, 25);
                 add(createPhoneArea);
 
                 createEmailLabel = new JLabel("Add an Email");
-                createEmailLabel.setBounds(630, 16, 200, 25);
+                createEmailLabel.setBounds(180, 100, 200, 25);
                 add(createEmailLabel);
 
                 createEmailArea = new JTextArea();
-                createEmailArea.setBounds(630, 40, 200, 25);
+                createEmailArea.setBounds(180, 120, 200, 25);
                 add(createEmailArea);
 
                 saveContactButton = new JButton("Save");
-                saveContactButton.setBounds(630, 80, 80, 25);
+                saveContactButton.setBounds(180, 160, 80, 25);
                 add(saveContactButton);
 
                 saveContactButton.addActionListener(new ActionListener() {
@@ -90,8 +101,18 @@ public class ContactUI extends JFrame {
                             createPhoneArea.getText(),
                             createEmailArea.getText()
                             );
+
+                                        //  Cleaning after saving
+                        createNameArea.setText("");
+                        createPhoneArea.setText("");
+                        createEmailArea.setText("");
+
+                        revalidate();
+                        repaint();
+
                     }
                 });
+
                 revalidate();
                 repaint();
             }
@@ -101,7 +122,66 @@ public class ContactUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Calling method for editing contact
-                ContactManager.editContact();
+                indexContactLabel = new JLabel("Index of the contact");
+                indexContactLabel.setBounds(400, 20, 200, 25);
+                add(indexContactLabel);
+
+                indexContactArea = new JTextArea();
+                indexContactArea.setBounds(400, 40, 200, 25);
+                add(indexContactArea);
+
+                editNameLabel = new JLabel("Edit the Name");
+                editNameLabel.setBounds(180, 20, 200, 25);
+                add(editNameLabel);
+
+                editNameArea = new JTextArea();
+                editNameArea.setBounds(180, 40, 200, 25);
+                add(editNameArea);
+
+                editPhoneLabel = new JLabel("Add a Phone number");
+                editPhoneLabel.setBounds(180, 60, 200, 25);
+                add(editPhoneLabel);
+
+                editPhoneArea = new JTextArea();
+                editPhoneArea.setBounds(180, 80, 200, 25);
+                add(editPhoneArea);
+
+                editEmailLabel = new JLabel("Add an Email");
+                editEmailLabel.setBounds(180, 100, 200, 25);
+                add(editEmailLabel);
+
+                editEmailArea = new JTextArea();
+                editEmailArea.setBounds(180, 120, 200, 25);
+                add(editEmailArea);
+
+                saveEditButton = new JButton("Save");
+                saveEditButton.setBounds(180, 160, 80, 25);
+                add(saveEditButton);
+
+                saveContactButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Calling method for adding new contact
+                        editContact(
+                            Integer.parseInt(indexContactArea.getText()),
+                            editNameArea.getText(), 
+                            editPhoneArea.getText(),
+                            editEmailArea.getText()
+                            );
+
+                        //  Clean fields after edit
+                        indexContactArea.setText("");
+                        editNameArea.setText("");
+                        editPhoneArea.setText("");
+                        editEmailArea.setText("");
+
+                        revalidate();
+                        repaint();
+
+                    }
+                });
+                revalidate();
+                repaint();
             }
         });
 
@@ -121,6 +201,13 @@ public class ContactUI extends JFrame {
         // Main logic for adding a contact to ContactList
         Contact newContact = new Contact(contactName, contactPhone, contactEmail);
         ContactManager.addContact(newContact);
+        updateContactList();
+    }
+
+    private void editContact(int index, String contactName, String contactPhone, String contactEmail) {
+        //  Main logic for modifying a contact from ContactList
+        Contact toEditContact = new Contact(contactName, contactPhone, contactEmail);
+        ContactManager.editContact(index, toEditContact);
         updateContactList();
     }
 

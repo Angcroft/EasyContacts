@@ -9,7 +9,8 @@ public class ContactManager {
     }
 
     // Edit contact
-    public static void editContact() {
+    public static void editContact(int indexContact, Contact element) {
+        contacts.set(indexContact, element);
     }
 
     // Delete contact
