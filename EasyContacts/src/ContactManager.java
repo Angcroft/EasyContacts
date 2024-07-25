@@ -14,7 +14,8 @@ public class ContactManager {
     }
 
     // Delete contact
-    public static void deleteContact() {
+    public static void deleteContact(int indexContact) {
+        contacts.remove(indexContact);
     }
 
     // Look contact by name
