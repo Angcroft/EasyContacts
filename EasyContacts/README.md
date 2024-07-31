@@ -31,7 +31,7 @@ To install and run this project locally, follow these steps:
 2. **Compile the code:**
 ensure you have Java Development Kit(JDK) installed. Compile the java files using the following command:
      ```bash
-    javac -d bin src/com/easycontacts/*.java
+    javac Main.java ContactUI.java ContactManager.java Contact.java
     ```
 
 3. **Run the application:**
