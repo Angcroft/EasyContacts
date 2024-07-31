@@ -7,8 +7,7 @@ A contact agenda application written in Java.
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [About the Use of this Project](#about-the-use-of-this-project)
 
 ## Introduction
 EasyContacts is a simple contact management application designed to help users store and manage their contacts. This project is written in Java and aims to demonstrate basic CRUD (Create, Read, Update, Delete) operations.
