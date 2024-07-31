@@ -1,18 +1,28 @@
-## Getting Started
+# EasyContacts
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A contact agenda application written in Java.
 
-## Folder Structure
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-The workspace contains two folders by default, where:
+## Introduction
+EasyContacts is a simple contact management application designed to help users store and manage their contacts efficiently. This project is written in Java and aims to demonstrate basic CRUD (Create, Read, Update, Delete) operations.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Features
+- Add new contacts
+- View all contacts
+- Update existing contacts
+- Delete contacts
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Installation
+To install and run this project locally, follow these steps:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Angcroft/EasyContacts.git
+   cd EasyContacts
